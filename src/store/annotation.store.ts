@@ -77,13 +77,9 @@ interface AnnotationStore {
 
   completePolygon: () => Promise<void>
 
-  deletePolygon: (
-    id: string
-  ) => void;
+  deletePolygon: (id: string | number) => void;
 
-  togglePolygonVisibility: (
-    id: string
-  ) => void;
+  togglePolygonVisibility: (id: string | number) => void;
 
   setImages: (
     images: AnnotationImage[]
