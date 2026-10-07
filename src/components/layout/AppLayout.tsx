@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 
 import { Navbar } from "./Navbar";
-import { Sidebar } from "./Sidebar";
 import { CreateTaskModal } from "@/components/task/CreateTaskModal";
 import { EditTaskModal } from "../task/EditTaskModal";
 import { DeleteTaskDialog } from "../task/DeleteTaskDialog";
@@ -25,19 +24,16 @@ export function AppLayout({ children }: AppLayoutProps) {
       }}
     >
       <div className="min-h-screen">
-            <Sidebar />
+        <Navbar />
 
+        <main>
+          <PageContainer>{children}</PageContainer>
+        </main>
 
-            <main className="ml-[260px]">
-                <PageContainer>
-                <Navbar />
-                {children}
-                </PageContainer>
-            </main>
-            <CreateTaskModal />
-            <EditTaskModal />
-            <DeleteTaskDialog />
-        </div>
+        <CreateTaskModal />
+        <EditTaskModal />
+        <DeleteTaskDialog />
+      </div>
     </motion.div>
   );
 }

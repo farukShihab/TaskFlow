@@ -3,6 +3,7 @@ import { PolygonList } from "./PolygonList";
 import { AnnotationCanvas } from "./canvas/AnnotationCanvas";
 import { ImageNavigator } from "./ImageNavigator";
 
+
 export function AnnotationWorkspace() {
     return (
         <div className="flex h-full gap-6">
