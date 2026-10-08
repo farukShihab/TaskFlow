@@ -35,6 +35,8 @@ interface TasksStore {
         id: number,
         status: Task["status"]
     ) => Promise<void>;
+
+    reset: () => void;
 }
 
 export const useTasksStore =
@@ -44,6 +46,13 @@ export const useTasksStore =
         loading: false,
 
         error: null,
+
+        reset: () =>
+            set({
+                tasks: [],
+                loading: false,
+                error: null,
+            }),
 
         moveTask: async (
             taskId,

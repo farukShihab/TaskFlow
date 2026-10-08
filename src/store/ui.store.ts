@@ -73,11 +73,27 @@ interface UIStore {
 
     clearCreateTaskDraft: () => void;
     clearEditTaskDraft: () => void;
+
+    reset: () => void;
 }
 
 export const useUIStore = create<UIStore>()(
+    
     persist(
         (set) => ({
+            reset: () =>
+                set({
+                    isCreateTaskOpen: false,
+                    createTaskDraft: { ...DEFAULT_TASK_DRAFT },
+                    createTaskTagInput: "",
+                    editTaskDraft: { ...DEFAULT_TASK_DRAFT },
+                    editTaskTagInput: "",
+                    editingTask: null,
+                    deletingTask: null,
+                    selectedDate: new Date(),
+                    searchQuery: "",
+                    ignoreNextEditClose: false,
+                }),     
 
             searchQuery: "",
 
@@ -206,6 +222,8 @@ export const useUIStore = create<UIStore>()(
                     createTaskTagInput: "",
                 }),
         }),
+
+        
 
         {
             name: "ui-store",
