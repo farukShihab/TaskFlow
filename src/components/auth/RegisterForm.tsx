@@ -58,7 +58,7 @@ export default function RegisterForm() {
       email: "",
       password: "",
       confirmPassword: "",
-      terms: false,
+      terms: true,
     },
   });
 
