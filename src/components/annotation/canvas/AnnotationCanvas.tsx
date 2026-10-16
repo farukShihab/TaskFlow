@@ -3,7 +3,7 @@
 import Konva from "konva";
 import { Stage } from "react-konva";
 
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 
 import { ImageLayer } from "./ImageLayer";
 import { PolygonLayer } from "./PolygonLayer";
@@ -137,18 +137,34 @@ export function AnnotationCanvas() {
         }
     };
 
+    const containerRef = useRef<HTMLDivElement>(null);
+    const [size, setSize] = useState({ width: 800, height: 600 });
+
+    useEffect(() => {
+        const el = containerRef.current;
+        if (!el) return;
+
+        const observer = new ResizeObserver(([entry]) => {
+            const { width, height } = entry.contentRect;
+            setSize({ width, height });
+        });
+
+        observer.observe(el);
+        return () => observer.disconnect();
+    }, []);
+
+
     return (
         <div
+            ref={containerRef}
             onWheel={handleWheel}
             className={cn(
-                "overflow-hidden rounded-2xl border",
-                mode === "draw"
-                    ? "cursor-crosshair"
-                    : "cursor-grab",
+                "h-full w-full overflow-hidden rounded-2xl border",
+                mode === "draw" ? "cursor-crosshair" : "cursor-grab",
             )}>
             <Stage
-                width={800}
-                height={600}
+                width={size.width}
+                height={size.height}
                 scaleX={scale}
                 scaleY={scale}
                 x={position.x}

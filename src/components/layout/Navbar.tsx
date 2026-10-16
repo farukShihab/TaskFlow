@@ -35,15 +35,15 @@ export function Navbar() {
     >
       <div className="surface mx-2 flex h-16 items-center gap-6 px-6">
         {/* Logo */}
-        <Link href="/tasks" className="flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-violet-600">
+        <div className="flex items-center gap-3">
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-violet-600 flex items-center gap-3">
             <CheckCheck className="h-5 w-5 text-white" />
           </div>
           <div className="hidden leading-tight sm:block">
             <h1 className="text-base font-bold text-foreground">TaskFlow</h1>
             <p className="text-xs text-muted">Productivity Suite</p>
           </div>
-        </Link>
+        </div>
 
         {/* Navigation */}
         <nav className="flex items-center gap-1">
